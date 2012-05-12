@@ -1,0 +1,14 @@
+X Bootstrap contender + arenas
+X Select and render question
+Randomly select a pair of contenders
+Call choose from client, incrementing win/lose count
+Implement ELO
+Get next pair, in advance
+Switch between views w/ backbone router
+Show list of contenders
+Form to add contenders
+Make list live
+Jquery masonry contenders
+Evercookie client
+Allow clients to delete contender if cookie matches
+

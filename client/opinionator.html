@@ -1,0 +1,44 @@
+<head>
+  <title>opinionator</title>
+</head>
+
+<body>
+  <header><h1>OPINIONATOR</h1></header>
+  {{> connection }}
+  {{> question }}
+  {{> choices  }}
+
+  <footer></footer>
+</body>
+
+<template name="connection">
+  <div class="connection {{ state }}">{{label}}</div>
+</template>
+
+<template name="choices">
+  <section class="choices" data-assignment-id="{{assignment_id}}">
+    {{#if has_assignment}}
+    <div class="choice" data-winner="{{contender1_id}}" data-loser="{{contender2_id}}">
+      <p>{{contender1_value}}</p>
+    </div>
+
+    <span class="versus">or</span>
+
+    <div class="choice" data-winner="{{contender2_id}}" data-loser="{{contender1_id}}">
+      <p>{{contender2_value}}</p>
+    </div>
+    {{else}}
+      <span class="Loading">Loading</span>
+    {{/if}}
+    
+
+  </section>
+</template>
+
+<template name="question">
+  <section class="question">
+    <span class="quo">&ldquo;</span>
+    {{ prompt }}
+    <span class="quo">&rdquo;</span>
+  </section>
+</template>
