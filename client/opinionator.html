@@ -5,9 +5,16 @@
 <body>
   <header><h1>OPINIONATOR</h1></header>
   {{> connection }}
-  {{> question }}
+  <section class="question">
+    <span class="quo">&ldquo;</span>
+    Which Diablo II boss has the best haircut?
+    <span class="quo">&rdquo;</span>
+  </section>
   {{> choices  }}
-
+  {{> ranks }}
+  <div class="toggle-ranks-container">
+    <a class="toggle-ranks">Toggle Rankings</a>
+  </div>
   <footer></footer>
 </body>
 
@@ -16,29 +23,37 @@
 </template>
 
 <template name="choices">
-  <section class="choices" data-assignment-id="{{assignment_id}}">
-    {{#if has_assignment}}
-    <div class="choice" data-winner="{{contender1_id}}" data-loser="{{contender2_id}}">
-      <p>{{contender1_value}}</p>
+  <section class="choices">
+    {{#if has_contenders}}
+    {{#with contender0}}
+    <div class="choice" data-choice="{{_id}}">
+      <p>{{text}}</p>
     </div>
+    {{/with}}
 
     <span class="versus">or</span>
 
-    <div class="choice" data-winner="{{contender2_id}}" data-loser="{{contender1_id}}">
-      <p>{{contender2_value}}</p>
+    {{#with contender1}}
+    <div class="choice" data-choice="{{_id}}">
+      <p>{{text}}</p>      
     </div>
+    {{/with}}
     {{else}}
       <span class="Loading">Loading</span>
     {{/if}}
-    
 
   </section>
 </template>
 
-<template name="question">
-  <section class="question">
-    <span class="quo">&ldquo;</span>
-    {{ prompt }}
-    <span class="quo">&rdquo;</span>
+<template name="ranks">
+  <section class="ranks">
+    <ol>
+    {{#each contenders}}
+      {{#with this}}
+        <li class="rank">{{text}} <span>{{rating}}</span></li>
+      {{/with}}
+    {{/each}}
+    </ol>
+
   </section>
 </template>
